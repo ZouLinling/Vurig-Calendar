@@ -323,7 +323,7 @@
                                    [UIColor colorWithHexString:@"0x383838"].CGColor);
     for (int i =0; i<[weekdays count]; i++) {
         NSString *weekdayValue = (NSString *)[weekdays objectAtIndex:i];
-        UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:12];
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:weekFontSize];
         [weekdayValue drawInRect:CGRectMake(i*(kVRGCalendarViewDayWidth+2), 40, kVRGCalendarViewDayWidth+2, 20) withFont:font lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
     }
     
@@ -470,8 +470,10 @@
             CGContextSetFillColorWithColor(context, 
                                            [UIColor whiteColor].CGColor);
         }
-        
-        [date drawInRect:CGRectMake(targetX+2, targetY+10, kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight) withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:dateFontSize];
+        CGRect rect = CGRectMake(targetX, targetY, kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight);
+        [date drawInRect:CGRectMake(targetX, (CGRectGetMidY(rect) - (font.lineHeight/2)), kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight) withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:dateFontSize] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+//        [date drawInRect:CGRectMake(targetX+2, targetY+10, kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight) withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:dateFontSize] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
     }
     
     //    CGContextClosePath(context);
@@ -544,7 +546,7 @@
         self.labelCurrentMonth = [[UILabel alloc] initWithFrame:CGRectMake(34, 0, kVRGCalendarViewWidth-68, 40)];
         [self addSubview:labelCurrentMonth];
         labelCurrentMonth.backgroundColor=[UIColor whiteColor];
-        labelCurrentMonth.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+        labelCurrentMonth.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:monthFontSize];
         labelCurrentMonth.textColor = [UIColor colorWithHexString:@"0x383838"];
         labelCurrentMonth.textAlignment = UITextAlignmentCenter;
         

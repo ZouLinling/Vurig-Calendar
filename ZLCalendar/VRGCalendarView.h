@@ -11,10 +11,14 @@
 #import "UIColor+expanded.h"
 
 #define kVRGCalendarViewTopBarHeight 60
-#define kVRGCalendarViewWidth 320
+#define kVRGCalendarViewWidth kVRGCalendarViewDayWidth*7 + 2*7    //每个item的宽度加上分割线的宽度
 
-#define kVRGCalendarViewDayWidth 44
-#define kVRGCalendarViewDayHeight 44
+#define kVRGCalendarViewDayWidth 38
+#define kVRGCalendarViewDayHeight 38
+
+#define dateFontSize 17
+#define weekFontSize 12
+#define monthFontSize 17
 
 @protocol VRGCalendarViewDelegate;
 @interface VRGCalendarView : UIView {
